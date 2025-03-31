@@ -20,8 +20,6 @@ This project demonstrates a real-time stock market data simulation and processin
 
 ---
 
----
-
 ## 🔧 Setup Instructions
 
 ### 1. Kafka Setup on EC2
@@ -46,6 +44,16 @@ bin/kafka-server-start.sh config/server.properties
 # Create a Kafka topic
 bin/kafka-topics.sh --create --topic kafka-topic-test --bootstrap-server <EC2_PUBLIC_IP>:9092 --replication-factor 1 --partitions 1
 
+```
 
+### 2. Querying through Athena
+
+1. Go to AWS Glue → Crawlers → Create crawler.
+2. Set data store as the S3 path from Kafka Consumer.
+3. Choose or create a Glue Database.
+4. Run the crawler to generate a table in the AWS Glue Data Catalog.
+5. Go to Amazon Athena Console.
+6. Select the Glue database from the left panel.
+7. Run the Query.
 
 
